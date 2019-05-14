@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:700,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="mediaQuery.css">
+
+    <title>WorkDay-user Employee</title>
+
+</head>
+
+<body>
+
+    <!--HEADER-->
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="nav-link disabled" href="#"><i class="fa fa-fw fa-home"></i> Login as @Employee</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="#viewContacts" data-toggle="modal"><i
+                                class="fa fa-fw fa-envelope"></i> <span>Contact</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="#"> Calendar/Time</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Logout</button>
+                </form>
+            </div>
+            <div id="viewContacts" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">
+                                <h4 class="modal-title">View Contacts</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label>Address:</label>
+                                    <textarea type="text" class="form-control"
+                                        required="">Baker Street CA46 England, UK </textarea>
+                                    <label>Tel:</label>
+                                    <textarea type="text" class="form-control"
+                                        required="">Telephone +49 741 563 6219 </textarea>
+                                    <label>Email:</label>
+                                    <textarea type="text" class="form-control"
+                                        required="">Email: test@email.com </textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-success" data-dismiss="modal" value="Edit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <img src="../assets/person.png" width="120px" height="120px">
+                    <h4> Welcome @Name & Surname</h4>
+                </div>
+                <div class="row">
+                    <form id="personal-Form" class="col-md-4" action="/action_page.php">
+                        <fieldset>
+                            <legend>Personal information:</legend>
+                            First name:<br>
+                            <input type="text" name="firstname" placeholder="Filled with the employee's first name...">
+                            <br>
+                            Last name:<br>
+                            <input type="text" name="lastname" placeholder="Filled with the employee's first name...">
+                            <br>
+                            Date Of Birth:<br>
+                            <input type="date" name="dateOfBirth">
+                            <br>
+                            Education:<br>
+                            <input type="text" name="education" placeholder="Filled with the employee's education...">
+                        </fieldset>
+                    </form>
+
+                    <form id="contact-Form" class="col-md-4" action="/action_page.php">
+                        <fieldset>
+                            <legend>Contact information:</legend>
+                            Home Address:<br>
+                            <input type="text" name="homeAddress"
+                                placeholder="Filled with the employee's home address...">
+                            <br>
+                            Work Email:<br>
+                            <input type="text" name="workEmail" placeholder="Filled with the employee's work email...">
+                            <br>
+                            Work Phone:<br>
+                            <input type="number" name="workPhone"
+                                placeholder="Filled with the employee's work phone...">
+                        </fieldset>
+                    </form>
+
+                    <form id="workPosition-Form" class="col-md-4" action="/action_page.php">
+                        <fieldset>
+                            <legend>Work information:</legend>
+                            Department:<br>
+                            <input type="text" name="department"
+                                placeholder="Filled with the employee's work department...">
+                            <br>
+                            Position:<br>
+                            <input type="text" name="position" placeholder="Filled with the employee's position...">
+                            <br>
+                            Salary:<br>
+                            <input type="number" name="manager" placeholder="Filled with the employee's salary...">
+                            <br>
+                            Date Of Hiring:<br>
+                            <input type="date" name="dateOfHiring">
+                        </fieldset>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!--MAIN-->
+    <main id="main-container" role="main">
+        <div class="container">
+            <h1 class="text-center">★Send request about free days</h1>
+            <hr class="new-hr" />
+            <hr class="new-hr" />
+        </div>
+
+        <div class="col-sm-3 col-md-5 m-3 ml-2 p-2 border rounded ">
+            <div class="col">
+                <div class="row-md-6">
+                    <h2>Leave Request Form </h2>
+                </div>
+                <br>
+                <div class="row-md-6">
+                    <div class="form-group">
+                        <label for="form_name">Firstname: *</label>
+                        <input id="leave-request" type="text" name="name" class="form-control"
+                            placeholder="Еnter your firstname " required="required" data-error="Firstname is required.">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="row-md-6">
+                    <label for="form_lastname">Lastname: *</label>
+                    <input id="leave-request" type="text" name="surname" class="form-control"
+                        placeholder="Еnter your lastname " required="required" data-error="Lastname is required.">
+                </div>
+                <div class="row-md-6">
+                    <label for="form_email">ID: *</label>
+                    <input id="leave-request" type="id" name="id" class="form-control"
+                        placeholder="Please enter your ID " required="required" data-error="Valid ID is required.">
+                </div>
+                <br>
+
+                <div class="row-md-6">
+                    <label for="form_email">Department: *</label>
+                    <input id="leave-request" type="department" name="department" class="form-control"
+                        placeholder="Еnter your Department " required="required"
+                        data-error="Valid Department is required.">
+                </div>
+                <div class="row-md-6">
+                    <label for="form_position">Work Position:* </label>
+                    <input id="leave-request" type="position" name="position" class="form-control"
+                        placeholder="Еnter your Work Position " required="required"
+                        data-error="Valid Work Position is required.">
+
+                </div>
+                <br>
+                <br>
+
+                <div class="row-md-6">
+                    <label for="form_leaveStart">Leave Start:* </label>
+                    <input id="leave-request" type="leaveStart" name="leaveStart" class="form-control"
+                        placeholder="Еnter your Leave Start " required="required" />
+
+                </div>
+                <br>
+                <div class="row-md-6">
+                    <label for="form_leaveEnd">Leave End:*</label>
+                    <input id="leave-request" type="leaveEnd" name="leaveEnd" class="form-control"
+                        placeholder="Еnter your LeaveEnd... " required="required" />
+                </div>
+                <div class="row-md-6">
+                    <form action="leaveType.php">
+                        <div class="container">
+
+                            <p>Leave Type:</p>
+
+                            <div class="col">
+                                <div class="row-md-6">
+                                    <input type="radio" id="f-option" name="selector">
+                                    <label for="f-option">Vacation</label>
+                                    <div class="check"></div>
+                                </div>
+                                <div class="row-md-6">
+                                    <input type="radio" id="s-option" name="selector">
+                                    <label for="s-option">Sick</label>
+                                    <div class="check">
+                                        <div class="inside"></div>
+                                    </div>
+                                </div>
+                                <div class="row-md-6">
+                                    <input type="radio" id="t-option" name="selector">
+                                    <label for="t-option">Other</label>
+                                    <div class="check">
+                                        <div class="inside"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row-md-6">
+                    <button class="btn btn-primary my-0 my-sm-0" type="submit">Submit</button>
+                </div>
+                <br>
+            </div>
+        </div>
+
+    </main>
+
+    <!--FOOTER-->
+
+    <footer class="page-footer font-small blue">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col text-center py-3">
+                    <h6>© 2019 Copyright.All Right Reserved.Terms & Conditions </h6>
+                    <a href="https://myCompany.com/community/">www.myCompany.com</a>
+                </div>
+                <div class="footer-socialIcon text-center py-1">
+                    <h6>LET'S GET SOCIAL!</h6>
+                    <a href="https://www.facebook.com/login" rel="external" target="_blank"><img
+                            src="../assets/facebook-config-footer-social-media-facebook-image.png" alt="Facebook"></a>
+                    <a href="https://publish.twitter.com/#" rel="external" target="_blank"><img
+                            src="../assets/twitter-config-footer-social-media-twitter-image.png" alt="Twitter"></a>
+                    <a href="https://www.instagram.com/grandportagecasino/" rel="external" target="_blank"><img
+                            src="../assets/instagram-config-footer-social-media-instagram-image.png"
+                            alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+
+    <script src="../script.js"></script>
+
+</body>
+
+</html>
