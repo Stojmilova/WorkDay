@@ -1,52 +1,75 @@
+ // OPEN page
+
  'use strict';
 
- $(document).ready(function () {
- 	//console.log( "ready!" );
+ firebase.auth().onAuthStateChanged(function (user) {
+   if (user) {
+     // User is signed in.
+     document.getElementById('header').style.display = "none";
+   } else {
+     // No user is signed in.
+     document.getElementById('header').style.display = "block";
+   }
  });
 
- db.collection('employees').get().then((snapshot) => {
- 	snapshot.docs.forEach(doc => {
- 		console.log(doc.data());
- 	});
- })
+ function login() {
 
- //SEND BIRTHDAY info
- function sendBirthInfo() {
- 	var link = "mailto:me@example.com" + //admin-email
- 		"?cc=myCCaddress@example.com" +
- 		"&subject=" + escape("This is my subject") +
- 		"&body=" + escape(document.getElementById('birth-info').value);
+   let userEmail = document.getElementById('email-field').value;
+   let userPassword = document.getElementById('password-field').value;
 
- 	window.location.href = link;
- }
 
- //SEND ANIVERSARY info
- function sendAniversaryInfo() {
- 	var link = "mailto:me@example.com" +
- 		"?cc=myCCaddress@example.com" +
- 		"&subject=" + escape("This is my subject") +
- 		"&body=" + escape(document.getElementById('aniversary-info').value);
+   firebase.auth().signInWithEmailAndPassword(userEmail, userPassword).catch(function (error) {
+     // Handle Errors here.
+     var errorCode = error.code;
+     var errorMessage = error.message;
+     window.alert("Error:" + errorMessage);
+     // ...
+   });
+   
 
- 	window.location.href = link;
- }
 
  //READ MORE button
  function readMore() {
- 	var dots = document.getElementById("dots");
- 	var moreText = document.getElementById("more");
- 	var btnText = document.getElementById("myBtn");
+   var dots = document.getElementById("dots");
+   var moreText = document.getElementById("more");
+   var btnText = document.getElementById("myBtn");
 
- 	if (dots.style.display === "none") {
- 		dots.style.display = "inline";
- 		btnText.innerHTML = "Read more";
- 		moreText.style.display = "none";
- 	} else {
- 		dots.style.display = "none";
- 		btnText.innerHTML = "Read less";
- 		moreText.style.display = "inline";
- 	}
+   if (dots.style.display === "none") {
+     dots.style.display = "inline";
+     btnText.innerHTML = "Read more";
+     moreText.style.display = "none";
+   } else {
+     dots.style.display = "none";
+     btnText.innerHTML = "Read less";
+     moreText.style.display = "inline";
+   }
  }
- 
+
+ /* $(document).ready(function () {
+    //Initialize Firebase
+    var firebaseConfig = {
+      apiKey: "AIzaSyAz_u8o53-T3FBCwF-Yy8qiBhjThFBcMgk",
+      authDomain: "workday-firestore.firebaseapp.com",
+      databaseURL: "https://workday-firestore.firebaseio.com",
+      projectId: "workday-firestore",
+      storageBucket: "workday-firestore.appspot.com",
+      messagingSenderId: "580442966710",
+      appId: "1:580442966710:web:800557cbc6c9aaf0"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    //db.settings({ timestampsInSnapshots: true })
+
+    db.collection('employees').get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+        console.log(doc.data());
+      });
+    })
+  });
+  */
+
+
  /*
   			// Activate tooltip
            $('[data-toggle="tooltip"]').tooltip();

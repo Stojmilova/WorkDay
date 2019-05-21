@@ -14,7 +14,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:700,900" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../style.css">
-    <!-- <link rel="stylesheet" type="text/css" href="mediaQuery.css"> -->
+    <link rel="stylesheet" type="text/css" href="../queries.css">
 
     <title>WorkDay-Admin</title>
 
@@ -47,34 +47,7 @@
                     <button class="btn btn-primary my-2 my-sm-0" type="submit">Logout</button>
                 </form>
             </div>
-            <div id="viewContacts" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form>
-                            <div class="modal-header">
-                                <h4 class="modal-title">View Contacts</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Address:</label>
-                                    <textarea type="text" class="form-control"
-                                        required="">Baker Street CA46 England, UK </textarea>
-                                    <label>Tel:</label>
-                                    <textarea type="text" class="form-control"
-                                        required="">Telephone +49 741 563 6219 </textarea>
-                                    <label>Email:</label>
-                                    <textarea type="text" class="form-control"
-                                        required="">Email: test@email.com </textarea>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-success" data-dismiss="modal" value="Edit">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+
         </nav>
         <div id="top" class="jumbotron">
             <div class="container">
@@ -86,6 +59,31 @@
 
     <!--MAIN-->
     <main id="main-container" role="main">
+        <div id="viewContacts" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Update Contacts</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Address:</label>
+                                <textarea type="text" class="form-control">Baker Street CA46 England, UK </textarea>
+                                <label>Tel:</label>
+                                <textarea type="text" class="form-control">Telephone +49 741 563 6219 </textarea>
+                                <label>Email:</label>
+                                <textarea type="text" class="form-control" required="">Email: test@email.com </textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-success" data-dismiss="modal" value="Save">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <h1 class="text-center">★Inform employees</h1>
             <hr class="new-hr" />
@@ -97,8 +95,9 @@
                     <p>@Nаme & Surname has a birthday today!Inform colleagues</p>
                     <h2>Upcomming birthday </h2>
                     <textarea name="uncommingBirthday" id="birth-info" cols="30"
-                        rows="10">Hi everyone, Оur colleague @Name & Surname today celebrates his/her birthday.Surprise and make his/her day special! </textarea>
-                    <p><a class="btn btn-primary" href="#" role="button" onclick="sendBirthInfo(); return false">Sent By
+                        rows="8">Hi everyone, Оur colleague @Name & Surname today celebrates his/her birthday.Surprise and make his/her day special! </textarea>
+                    <p><a class="btn btn-primary" href="#" role="button" onclick="sendBirthInfo() ; return false">Sent
+                            By
                             Email»»</a></p>
 
                 </div>
@@ -106,9 +105,9 @@
                     <p>@Nаme & Surname has @10th anniversary!Inform colleagues</p>
                     <h2> Upcomming aniversary</h2>
                     <textarea name="uncommingAniversary" id="aniversary-info" cols="30"
-                        rows="10">Hi everyone, Оur colleague @Name & Surname today celebrates @10th anniversary in our company. </textarea>
-                    <p><a class="btn btn-primary" href="#" role="button"
-                            onclick="sendAniversaryInfo(); return false">Sent By
+                        rows="8">Hi everyone, Оur colleague @Name & Surname today celebrates @10th anniversary in our company. </textarea>
+                    <p><a class="btn btn-primary" href="#" role="button" onclick="sendAniversaryInfo() ; return
+                            false">Sent By
                             Email»»</a></p>
                 </div>
                 <div class="col-sm-4">
@@ -118,27 +117,26 @@
                         magna mollis euismod. Donec sed odio dui. </p>
                     <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
                 </div>
-                <div class="col-sm-4">
-                    <h2>Upcomming training</h2>
-                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id
-                        ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                        condimentum nibh, ut fermentum massa justo sit amet risus....</p>
-                    <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
+
+                <div class="col-sm-4" id="training-display">
+                    <h2>Upcomming Training</h2>
+                    <textarea name="uncommingTraining" id="training-info" cols="30" rows="10"></textarea>
+                    <p><a class="btn btn-primary" href="#" role="button" onclick="sendTrainingInfo() ; return 
+                             false">Send By Email »</a></p>
+
                 </div>
-                <div class="col-sm-4">
-                    <h2>Team Building</h2>
-                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id
-                        ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                        condimentum nibh, ut fermentum massa justo sit amet risus...</p>
-                    <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
+                <div class="col-sm-4" id="teamBuilding-display">
+                    <h2>Upcomming Team Building</h2>
+                    <textarea name="uncommingTeamBuilding" id="teamBuilding-info" cols="30" rows="8"></textarea>
+                    <p><a class="btn btn-primary" href="#" role="button" onclick="sendTemaBuildingInfo() ; return
+                            false">Send By Email »</a></p>
                 </div>
-                <div class="col-sm-4">
+
+                <div class="col-sm-4" id="jobPosition-display">
                     <h2>Internal Job Position</h2>
-                    <p>Hi all, As you may already know, there’s a vacancy for a @Job Title in our @Departmant.Although
-                        we plan to publish this job opening to external channels, we strongly encourage any current
-                        employee who is interested in the role to apply.To be considered for this role, you should
-                        must-have or nice-to-have experience in...</p>
-                    <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
+                    <textarea name="uncommingInternalJobPosition" id="jobPosition-info" cols="30" rows="8"></textarea>
+                    <p><a class="btn btn-primary" href="#" role="button" onclick="sendInternalJobPositionInfo() ; return
+                            false">Send By Email »</a></p>
                 </div>
 
             </div>
@@ -518,7 +516,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
-    <script src="../app.js"></script>
+
+    <script src="userAdminScript.js"></script>
+    <script src="dataSources/training.js"></script>
+    <script src="dataSources/teamBuilding.js"></script>
+    <script src="dataSources/jobPosition.js"></script>
 
 </body>
 

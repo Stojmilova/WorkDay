@@ -5,9 +5,6 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--FIREBASE-->
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -16,8 +13,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="mediaQueries.css">
+    <!--     <link rel="stylesheet" type="text/css" href="mediaQueries.css"> -->
 
     <title>WorkDay</title>
 
@@ -40,47 +38,19 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="navbar-brand" href="#viewContacts" data-toggle="modal"><i
-                                class="fa fa-fw fa-envelope"></i> <span>Contact</span></a>
+                                class="fa fa-fw fa-envelope"></i> <span>Contact Us</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="navbar-brand" href="#"> Calendar/Time</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <i class="fa fa-fw fa-user"></i><input class="form-control mr-sm-2" type="text" placeholder="Email"
+                    <i class="fa fa-fw fa-user"></i><input class="form-control mr-sm-2" type="text" id="email-field" placeholder="Email"
                         aria-label="Email">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Password" aria-label="Password">
-                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button>
+                    <input class="form-control mr-sm-2" type="password" id="password-field" placeholder="Password" aria-label="Password">
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit" onclick="login()">Login</button>
                 </form>
-            </div>
-            <div id="viewContacts" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form>
-                            <div class="modal-header">
-                                <h4 class="modal-title">View Contacts</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Address:</label>
-                                    <textarea type="text" class="form-control"
-                                        required="">Baker Street CA46 England, UK </textarea>
-                                    <label>Tel:</label>
-                                    <textarea type="text" class="form-control"
-                                        required="">Telephone +49 741 563 6219 </textarea>
-                                    <label>Email:</label>
-                                    <textarea type="text" class="form-control"
-                                        required="">Email: test@email.com </textarea>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-success" data-dismiss="modal" value="Cancel">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+
         </nav>
 
         <div class="jumbotron">
@@ -92,7 +62,7 @@
                 <p>In 1999, I started this company with the mission statement, “We will work toward bringing in
                     the greatest amount of relevant traffic to our clients’ websites, using the most ethical methods
                     available.”When I started our Internet marketing company 15 years ago, it was just me and a dream.
-                    That dream was to grow and be the best. Today, we have 43 employees, all in-house, in London.
+                    That dream was to grow and be the best. Today, we have 32 employees, all in-house, in London.
                     The average employee has been with us for 5.24 years.I firmly believe that we have found the
                     perfect services and perfect size team to best provide for our clients.We offer specific services
                     that
@@ -119,6 +89,39 @@
 
             <hr class="new-hr" />
         </div>
+
+        <!--View Contact-->
+
+        <div id="viewContacts" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">View Contacts</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Address:</label>
+                                <textarea type="text" class="form-control"
+                                    readonly>Baker Street CA46 England, UK </textarea>
+                                <label>Tel/Fax</label>
+                                <textarea type="text" class="form-control"
+                                    readonly>Telephone: +49 741 563 6219    Fax: +1 (855) 283-3322 </textarea>
+                                <label>Email:</label>
+                                <textarea type="text" class="form-control"
+                                    readonly>Email: work_able@gmail.com </textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-success" data-dismiss="modal" value="Cancel">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--Our Team-->
 
         <section class="content-width team-members">
             <div class="row">
@@ -349,30 +352,29 @@
         </div>
     </footer>
 
-    <script>
-        //Initialize Firebase
-        var firebaseConfig = {
-            apiKey: "AIzaSyAz_u8o53-T3FBCwF-Yy8qiBhjThFBcMgk",
-            authDomain: "workday-firestore.firebaseapp.com",
-            databaseURL: "https://workday-firestore.firebaseio.com",
-            projectId: "workday-firestore",
-            storageBucket: "workday-firestore.appspot.com",
-            messagingSenderId: "580442966710",
-            appId: "1:580442966710:web:800557cbc6c9aaf0"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        //db.settings({ timestampsInSnapshots: true })
-    </script>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
-        
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBRTFJlP1jCFuzrPSIkK7OwCpNqc8--yG0",
+            authDomain: "users-workday.firebaseapp.com",
+            databaseURL: "https://users-workday.firebaseio.com",
+            projectId: "users-workday",
+            storageBucket: "users-workday.appspot.com",
+            messagingSenderId: "410016595609",
+            appId: "1:410016595609:web:141b97dc11cde884"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+
     <script src="app.js"></script>
 
 </body>
