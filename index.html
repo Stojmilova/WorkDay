@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--FIREBASE-->
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -13,12 +15,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+
     <link rel="stylesheet" type="text/css" href="style.css">
-    <!--     <link rel="stylesheet" type="text/css" href="mediaQueries.css"> -->
+    <link rel="stylesheet" type="text/css" href="queries.css">
 
     <title>WorkDay</title>
-
 
 </head>
 
@@ -38,19 +39,18 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="navbar-brand" href="#viewContacts" data-toggle="modal"><i
-                                class="fa fa-fw fa-envelope"></i> <span>Contact Us</span></a>
+                                class="fa fa-fw fa-envelope"></i> <span>Contact Info</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="navbar-brand" href="#"> Calendar/Time</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <i class="fa fa-fw fa-user"></i><input class="form-control mr-sm-2" type="text" id="email-field" placeholder="Email"
-                        aria-label="Email">
-                    <input class="form-control mr-sm-2" type="password" id="password-field" placeholder="Password" aria-label="Password">
-                    <button class="btn btn-primary my-2 my-sm-0" type="submit" onclick="login()">Login</button>
+                <form id="loginForm" method="POST">
+                    <input type="email" id="loginEmail" placeholder="Email">
+                    <input type="password" id="loginPassword" placeholder="Password">
+                    <button class="btn btn-primary">Login</button>
                 </form>
-
+            </div>
         </nav>
 
         <div class="jumbotron">
@@ -73,7 +73,7 @@
                     advertising company is an important one. <span id="dots">...</span><span id="more">We employs
                         specialists to make sure our clients have the best chance to reach and even exceed their goals.
                         Peace and love, Mark Boykin, CEO and Founder.</span></p>
-                <button onclick="readMore()" id="myBtn" class="btn btn-primary" role="button">Learn more »</button>
+                <button role="button" id="btnRead" class="btn btn-primary" >Learn more »</button>
             </div>
         </div>
     </header>
@@ -84,8 +84,9 @@
         <div class="container">
             <h1 class="text-center">★Meet our Team</h1>
             <hr class="new-hr" />
-            <h3>The team brings together years of experience in HR, marketing & sales - the perfect mix for building an
-                excellent product</h3>
+            <h3>"The team brings together years of experience in HR, marketing & sales - the perfect mix for
+                building an
+                excellent product"</h3>
 
             <hr class="new-hr" />
         </div>
@@ -97,7 +98,7 @@
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">
-                            <h4 class="modal-title">View Contacts</h4>
+                            <h4 class="modal-title">★WHERE I WORK★</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <div class="modal-body">
@@ -114,7 +115,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="button" class="btn btn-success" data-dismiss="modal" value="Cancel">
+                            <input type="button" class="btn btn-primary" data-dismiss="modal" value="Cancel">
                         </div>
                     </form>
                 </div>
@@ -125,13 +126,13 @@
 
         <section class="content-width team-members">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-11">
                     <article>
-                        <div class="image">
-                            <img src="assets/person.png" height="80" width="80" alt="CEO">
+                        <div class="text-center">
+                            <img src="Assets/img-employees/sef.jpg" height="600" width="600" alt="CEO">
                         </div>
-                        <h5>CEO & Founder</h5>
-                        <div class="socialIcon text-left py-1">
+                        <h5 class="text-center">CEO & Founder</h5>
+                        <div class="socialIcon text-center py-1">
                             <a href="https://www.linkedin.com/" rel="external" target="_blank"><img
                                     src="assets/linkedin.png" height="20" width="20" alt="Linkedin"></a>
                             <a href="mailto:anna.benton7@gmail.com" rel="external" target="_blank"><img
@@ -143,13 +144,13 @@
         </section>
         <section class="content-width team-members">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <article>
-                        <div class="image">
-                            <img src="assets/person.png" height="80" width="80" alt="manager">
+                        <div class="text-center">
+                            <img src="Assets/img-employees/manager1.jpg" height="300" width="400" alt="manager">
                         </div>
-                        <h5>Manager</h5>
-                        <div class="footer-socialIcon text-left py-1">
+                        <h5 class="text-center">Manager</h5>
+                        <div class="footer-socialIcon text-center py-1">
                             <a href="https://www.linkedin.com/" rel="external" target="_blank"><img
                                     src="assets/linkedin.png" height="20" width="20" alt="Linkedin"></a>
                             <a href="mailto:anna.benton7@gmail.com" rel="external" target="_blank"><img
@@ -157,14 +158,13 @@
                         </div>
                     </article>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <article>
-                        <div class="image">
-                            <img src="assets/person.png" height="80" width="80" alt="manager">
-
+                        <div class="text-center">
+                            <img src="Assets/img-employees/manager2.jpg" height="230" width="230" alt="manager">
                         </div>
-                        <h5>Manager</h5>
-                        <div class="footer-socialIcon text-left py-1">
+                        <h5 class="text-center"> Manager</h5>
+                        <div class="footer-socialIcon text-center py-1">
                             <a href="https://www.linkedin.com/" rel="external" target="_blank"><img
                                     src="assets/linkedin.png" height="20" width="20" alt="Linkedin"></a>
                             <a href="mailto:anna.benton7@gmail.com" rel="external" target="_blank"><img
@@ -172,35 +172,6 @@
                         </div>
                     </article>
                 </div>
-                <div class="col-md-3">
-                    <article>
-                        <div class="image">
-                            <img src="assets/person.png" height="80" width="80" alt="manager">
-                        </div>
-                        <h5>Manager</h5>
-                        <div class="footer-socialIcon text-left py-1">
-                            <a href="https://www.linkedin.com/" rel="external" target="_blank"><img
-                                    src="assets/linkedin.png" height="20" width="20" alt="Linkedin"></a>
-                            <a href="mailto:anna.benton7@gmail.com" rel="external" target="_blank"><img
-                                    src="assets/gmail.png" height="20" width="20" alt="Gmail"></a>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-3">
-                    <article>
-                        <div class="image">
-                            <img src="assets/person.png" height="80" width="80" alt="manager">
-                        </div>
-                        <h5>Manager</h5>
-                        <div class="footer-socialIcon text-left py-1">
-                            <a href="https://www.linkedin.com/" rel="external" target="_blank"><img
-                                    src="assets/linkedin.png" height="20" width="20" alt="Linkedin"></a>
-                            <a href="mailto:anna.benton7@gmail.com" rel="external" target="_blank"><img
-                                    src="assets/gmail.png" height="20" width="20" alt="Gmail"></a>
-                        </div>
-                    </article>
-                </div>
-
             </div>
         </section>
 
@@ -208,11 +179,11 @@
             <div class="row">
                 <div class="col-md-3">
                     <article>
-                        <div class="image">
-                            <img src="assets/person.png" height="80" width="80" alt="assistant">
+                        <div class="text-center">
+                            <img src="Assets/img-employees/asistant1.jpg" height="220" width="220" alt="assistant">
                         </div>
-                        <h5>Assistant</h5>
-                        <div class="footer-socialIcon text-left py-1">
+                        <h5 class="text-center">Assistant</h5>
+                        <div class="footer-socialIcon text-center py-1">
                             <a href="https://www.linkedin.com/" rel="external" target="_blank"><img
                                     src="assets/linkedin.png" height="20" width="20" alt="Linkedin"></a>
                             <a href="mailto:anna.benton7@gmail.com" rel="external" target="_blank"><img
@@ -222,12 +193,11 @@
                 </div>
                 <div class="col-md-3">
                     <article>
-                        <div class="image">
-                            <img src="assets/person.png" height="80" width="80" alt="assistant">
-
+                        <div class="text-center">
+                            <img src="Assets/img-employees/asistant2.jpg" height="220" width="220" alt="assistant">
                         </div>
-                        <h5>Assistant</h5>
-                        <div class="footer-socialIcon text-left py-1">
+                        <h5 class="text-center">Assistant</h5>
+                        <div class="footer-socialIcon text-center py-1">
                             <a href="https://www.linkedin.com/" rel="external" target="_blank"><img
                                     src="assets/linkedin.png" height="20" width="20" alt="Linkedin"></a>
                             <a href="mailto:anna.benton7@gmail.com" rel="external" target="_blank"><img
@@ -237,11 +207,11 @@
                 </div>
                 <div class="col-md-3">
                     <article>
-                        <div class="image">
-                            <img src="assets/person.png" height="80" width="80" alt="assistant">
+                        <div class="text-center">
+                            <img src="Assets/img-employees/asistant3.jpg" height="220" width="220" alt="assistant">
                         </div>
-                        <h5>Assistant</h5>
-                        <div class="footer-socialIcon text-left py-1">
+                        <h5 class="text-center">Assistant</h5>
+                        <div class="footer-socialIcon text-center py-1">
                             <a href="https://www.linkedin.com/" rel="external" target="_blank"><img
                                     src="assets/linkedin.png" height="20" width="20" alt="Linkedin"></a>
                             <a href="mailto:anna.benton7@gmail.com" rel="external" target="_blank"><img
@@ -251,74 +221,11 @@
                 </div>
                 <div class="col-md-3">
                     <article>
-                        <div class="image">
-                            <img src="assets/person.png" height="80" width="80" alt="assistant">
+                        <div class="text-center">
+                            <img src="Assets/img-employees/asistant4.jpg" height="220" width="220" alt="assistant">
                         </div>
-                        <h5>Assistant</h5>
-                        <div class="footer-socialIcon text-left py-1">
-                            <a href="https://www.linkedin.com/" rel="external" target="_blank"><img
-                                    src="assets/linkedin.png" height="20" width="20" alt="Linkedin"></a>
-                            <a href="mailto:anna.benton7@gmail.com" rel="external" target="_blank"><img
-                                    src="assets/gmail.png" height="20" width="20" alt="Gmail"></a>
-                        </div>
-                    </article>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="content-width team-members">
-            <div class="row">
-                <div class="col-md-3">
-                    <article>
-                        <div class="image">
-                            <img src="assets/person.png" height="80" width="80" alt="referent">
-                        </div>
-                        <h5>Referent</h5>
-                        <div class="footer-socialIcon text-left py-1">
-                            <a href="https://www.linkedin.com/" rel="external" target="_blank"><img
-                                    src="assets/linkedin.png" height="20" width="20" alt="Linkedin"></a>
-                            <a href="mailto:anna.benton7@gmail.com" rel="external" target="_blank"><img
-                                    src="assets/gmail.png" height="20" width="20" alt="Gmail"></a>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-3">
-                    <article>
-                        <div class="image">
-                            <img src="assets/person.png" height="80" width="80" alt="referent">
-
-                        </div>
-                        <h5>Referent </h5>
-                        <div class="footer-socialIcon text-left py-1">
-                            <a href="https://www.linkedin.com/" rel="external" target="_blank"><img
-                                    src="assets/linkedin.png" height="20" width="20" alt="Linkedin"></a>
-                            <a href="mailto:anna.benton7@gmail.com" rel="external" target="_blank"><img
-                                    src="assets/gmail.png" height="20" width="20" alt="Gmail"></a>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-3">
-                    <article>
-                        <div class="image">
-                            <img src="assets/person.png" height="80" width="80" alt="referent">
-                        </div>
-                        <h5>Referent </h5>
-                        <div class="footer-socialIcon text-left py-1">
-                            <a href="https://www.linkedin.com/" rel="external" target="_blank"><img
-                                    src="assets/linkedin.png" height="20" width="20" alt="Linkedin"></a>
-                            <a href="mailto:anna.benton7@gmail.com" rel="external" target="_blank"><img
-                                    src="assets/gmail.png" height="20" width="20" alt="Gmail"></a>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-3">
-                    <article>
-                        <div class="image">
-                            <img src="assets/person.png" height="80" width="80" alt="referent">
-                        </div>
-                        <h5>Referent </h5>
-                        <div class="footer-socialIcon text-left py-1">
+                        <h5 class="text-center">Assistant</h5>
+                        <div class="footer-socialIcon text-center py-1">
                             <a href="https://www.linkedin.com/" rel="external" target="_blank"><img
                                     src="assets/linkedin.png" height="20" width="20" alt="Linkedin"></a>
                             <a href="mailto:anna.benton7@gmail.com" rel="external" target="_blank"><img
@@ -328,6 +235,60 @@
                 </div>
             </div>
         </section>
+
+        <!--Offices-->
+
+        <div class="container">
+            <hr class="new-hr" />
+            <h2 class="text-center"><strong>Offices</strong></h2>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+        </div>
+        <div class="offices">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <p class="text-align-center"><strong>Skopje, Macedonia</strong></p>
+
+                        <p class="text-align-center"><strong>Innovation&nbsp;&amp; Development
+                                office</strong></p>
+
+                        <p class="text-align-center">&nbsp;</p>
+
+                        <p class="text-align-center">Address: Partizanska, 1000, Skopje<br>
+                            Phone: +389 2 3212 474</p>
+
+                        <p class="text-align-center">&nbsp;</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <p class="text-align-center"><strong>Ohrid, Macedonia</strong></p>
+
+                        <p class="text-align-center"><strong>Innovation&nbsp;&amp; Development
+                                office</strong></p>
+
+                        <p class="text-align-center">&nbsp;</p>
+
+                        <p class="text-align-center">Address: Ohridska 42, 7000, Ohrid<br>
+                            Phone: +389 47 233 266</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text-align-center"><strong>Stip, Macedonia</strong></p>
+
+                        <p class="text-align-center"><strong>Innovation&nbsp;&amp; Development
+                                office</strong></p>
+
+                        <p class="text-align-center">&nbsp;</p>
+
+                        <p class="text-align-center">Address: Stipska 37, 2000, Ohrid<br>
+                            Phone: +389 42 244 277</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
     </main>
 
     <!--FOOTER-->
@@ -352,27 +313,33 @@
         </div>
     </footer>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!--FIREBASE-->
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.0.0/firebaseui.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAz_u8o53-T3FBCwF-Yy8qiBhjThFBcMgk",
+            authDomain: "workday-firestore.firebaseapp.com",
+            databaseURL: "https://workday-firestore.firebaseio.com",
+            projectId: "workday-firestore",
+            storageBucket: "workday-firestore.appspot.com",
+            messagingSenderId: "580442966710",
+            appId: "1:580442966710:web:800557cbc6c9aaf0"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
-
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyBRTFJlP1jCFuzrPSIkK7OwCpNqc8--yG0",
-            authDomain: "users-workday.firebaseapp.com",
-            databaseURL: "https://users-workday.firebaseio.com",
-            projectId: "users-workday",
-            storageBucket: "users-workday.appspot.com",
-            messagingSenderId: "410016595609",
-            appId: "1:410016595609:web:141b97dc11cde884"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
 
 
     <script src="app.js"></script>

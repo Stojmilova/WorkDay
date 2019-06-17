@@ -41,7 +41,7 @@ let teamBuildingData = [{
     {
         "theme": "Go-Kart Racing",
         "entities": [{
-            "dateОfRegistration": "21-05-2019",
+            "dateОfRegistration": "20-06-2019",
             "start": "25-05-2019",
             "end": "30-05-2019",
             "location": "K1 Speed"

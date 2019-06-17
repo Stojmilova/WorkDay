@@ -5,16 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--FIREBASE-->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-auth.js"></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
     <link href="https://fonts.googleapis.com/css?family=Lato:700,900" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="../style.css">
-    <link rel="stylesheet" type="text/css" href="../queries.css">
+    <link rel="stylesheet" type="text/css" href="queries.css">
 
     <title>WorkDay-Admin</title>
 
@@ -43,7 +46,7 @@
                         <a class="navbar-brand" href="#"> Calendar/Time</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
+                <form id="logOutForm" class="form-inline my-2 my-lg-0">
                     <button class="btn btn-primary my-2 my-sm-0" type="submit">Logout</button>
                 </form>
             </div>
@@ -58,6 +61,7 @@
     </header>
 
     <!--MAIN-->
+
     <main id="main-container" role="main">
         <div id="viewContacts" class="modal fade">
             <div class="modal-dialog">
@@ -135,8 +139,8 @@
                 <div class="col-sm-4" id="jobPosition-display">
                     <h2>Internal Job Position</h2>
                     <textarea name="uncommingInternalJobPosition" id="jobPosition-info" cols="30" rows="8"></textarea>
-                    <p><a class="btn btn-primary" href="#" role="button" onclick="sendInternalJobPositionInfo() ; return
-                            false">Send By Email »</a></p>
+                    <p><a class="btn btn-primary" href="#" role="button" onclick="sendInternalJobPositionInfo() ; return 
+                        false">Send By Email »</a></p>
                 </div>
 
             </div>
@@ -149,8 +153,8 @@
             <div class="row">
                 <div class="col-md-5">
                     <form class="form-inline my-0 my-lg-0">
-                        <input class="form-control mr-sm-0" type="text" placeholder="Search employee..."
-                            aria-label="Search">
+                        <input class="form-control mr-sm-0" type="text" id="search-input"
+                            placeholder="Search employee..." aria-label="Search">
                         <button class="btn btn-primary my-0 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
@@ -176,16 +180,12 @@
             </div>
         </div>
         <br>
-        <table class="table table-hover table-dark">
+        <table class="table table-hover table-dark" id="employees">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
-                    <th scope="col">Password</th>
-                    <th scope="col">Email</th>
                     <th scope="col">Date of Birth</th>
-                    <th scope="col">Education</th>
                     <th scope="col">Department</th>
                     <th scope="col">Position</th>
                     <th scope="col">Date of Hiring</th>
@@ -194,7 +194,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!--      <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
@@ -207,130 +207,22 @@
                     <td>@mdo</td>
                     <td>Mark</td>
                     <td>Edit/Delete</td>
-                    <!-- <td>
+                    <td>
                         <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
                                 data-toggle="tooltip" title="" data-original-title="Edit"></i></a>
                         <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
                                 data-toggle="tooltip" title="" data-original-title="Delete"></i></a>
-                    </td> -->
+                    </td>
 
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Edit/Delete</td>
+                </tr> -->
 
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Edit/Delete</td>
 
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Edit/Delete</td>
-
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Edit/Delete</td>
-
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Edit/Delete</td>
-
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Edit/Delete</td>
-
-                </tr>
             </tbody>
         </table>
 
         <!--PAGINATION-->
 
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-            <div class="backToTop"><a id="back-to-top" href="#top">
-                    <i id="back-topi" class="fa fa-arrow-circle-up"></i>
-                </a></div>
-
-        </nav>
+        <div class="page"></div>
 
 
         <!-- Add New Employee-->
@@ -510,17 +402,21 @@
     </footer>
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-        </script>
+        </script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
 
     <script src="userAdminScript.js"></script>
     <script src="dataSources/training.js"></script>
     <script src="dataSources/teamBuilding.js"></script>
     <script src="dataSources/jobPosition.js"></script>
+
 
 </body>
 

@@ -41,7 +41,7 @@ let jobPositionsData = [{
             "department": "Finance",
             "description": "Directs preparation of annual operating and business fiscal plans (budgets).",
             "type": "part-time",
-            "posted": "21-05-2019",
+            "posted": "20-06-2019",
             "theClosingDate": "20-07-2019",
             "location": "UK",
             "skills": ["Аccounting", "Financial Management", "Audit"],
@@ -107,7 +107,14 @@ function sendInternalJobPositionInfo() {
         "&subject=" + escape("Open Internal Job Position Info") +
         "&body=" + escape(document.getElementById('jobPosition-info').value);
 
+
     window.location.href = link;
 }
 
 loadData()
+
+
+
+
+  
+
