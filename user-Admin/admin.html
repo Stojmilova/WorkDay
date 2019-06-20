@@ -18,6 +18,9 @@
 
     <link rel="stylesheet" type="text/css" href="../style.css">
     <link rel="stylesheet" type="text/css" href="queries.css">
+    <!-- reference Moment.js library -->
+    <script src="https://momentjs.com/downloads/moment.js" type="text/javascript"></script>
+
 
     <title>WorkDay-Admin</title>
 
@@ -95,38 +98,24 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-sm-4">
-                    <p>@Nаme & Surname has a birthday today!Inform colleagues</p>
-                    <h2>Upcomming birthday </h2>
-                    <textarea name="uncommingBirthday" id="birth-info" cols="30"
-                        rows="8">Hi everyone, Оur colleague @Name & Surname today celebrates his/her birthday.Surprise and make his/her day special! </textarea>
+                <div class="col-sm-4" id="birthday-display">
+                    <h2>★ ★ Who has birthday today! </h2>
+                    <ul id="birthday-list"></ul>
+                    <textarea name="uncommingBirthday" id="birthday-info" cols="30" rows="15"> </textarea>
                     <p><a class="btn btn-primary" href="#" role="button" onclick="sendBirthInfo() ; return false">Sent
-                            By
-                            Email»»</a></p>
-
+                            By Email»»</a></p>
                 </div>
-                <div class="col-sm-4">
-                    <p>@Nаme & Surname has @10th anniversary!Inform colleagues</p>
-                    <h2> Upcomming aniversary</h2>
-                    <textarea name="uncommingAniversary" id="aniversary-info" cols="30"
-                        rows="8">Hi everyone, Оur colleague @Name & Surname today celebrates @10th anniversary in our company. </textarea>
-                    <p><a class="btn btn-primary" href="#" role="button" onclick="sendAniversaryInfo() ; return
-                            false">Sent By
-                            Email»»</a></p>
+                <div class="col-sm-8" id="upcommingBirthdays">
+                    <h2>List of upcomming birthdays: </h2>
                 </div>
-                <div class="col-sm-4">
-                    <h2>Manage Holidays/Request for free days</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                        mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-                        magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
-                </div>
-
+            </div>
+            <div class="row">
                 <div class="col-sm-4" id="training-display">
                     <h2>Upcomming Training</h2>
+
                     <textarea name="uncommingTraining" id="training-info" cols="30" rows="10"></textarea>
                     <p><a class="btn btn-primary" href="#" role="button" onclick="sendTrainingInfo() ; return 
-                             false">Send By Email »</a></p>
+                                     false">Send By Email »</a></p>
 
                 </div>
                 <div class="col-sm-4" id="teamBuilding-display">
@@ -416,7 +405,6 @@
     <script src="dataSources/training.js"></script>
     <script src="dataSources/teamBuilding.js"></script>
     <script src="dataSources/jobPosition.js"></script>
-
 
 </body>
 

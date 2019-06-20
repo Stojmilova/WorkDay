@@ -32,6 +32,7 @@ $(document).ready(function () {
         })
         renderPagination(employeesData);
         renderEmployees(employeesData);
+        daysUntil(employeesData)
         //console.log(employeesData);
     });
 
@@ -111,18 +112,75 @@ function changePage(pageNum) {
 
 //LOG OUT
 
-$('#logOutForm').on('submit', function (e){
-    
+$('#logOutForm').on('submit', function (e) {
+
     e.preventDefault();
 
     firebase.auth().signOut()
-    .then(function () {
-        location.href = "../index.html";
-    })
-    .catch(function (error) {
-        // An error happened
-    });
+        .then(function () {
+            location.href = "../index.html";
+        })
+        .catch(function (error) {
+            // An error happened
+        });
 })
+
+//DISPLAY Birthday-employee
+
+function daysUntil(employeesData) {
+
+    let birthDates = [];
+
+    for (let i in employeesData) {
+        let data = employeesData[i].DateOfBirth;
+        birthDates.push(data);
+    }
+    for (let i in birthDates) {
+        var birthday = moment(birthDates[i]);
+        var today = moment().format("YYYY-MM-DD");
+
+        let divBirthday = document.getElementById('birthday-display');
+        let textareaBirthday = document.getElementById('birthday-info');
+        let headingInfo = document.createElement('div');
+        divBirthday.appendChild(headingInfo);
+
+        let divAllBirthdays = document.getElementById('upcommingBirthdays');
+        let allBirthdays = document.createElement('div');
+        divAllBirthdays.appendChild(allBirthdays);
+
+        // calculate age of the person
+        var age = moment(today).diff(birthday, 'years');
+        moment(age).format("YYYY-MM-DD");
+        //console.log(`${employeesData[i].FirstName}`, age);
+
+        var nextBirthday = moment(birthday).add(age, 'years');
+        moment(nextBirthday).format("YYYY-MM-DD");
+
+
+        /* added one more year in case the birthday has already passed
+        to calculate date till next one. */
+        if (nextBirthday.isSame(today)) {
+
+            textareaBirthday.innerHTML = `Today, our colleague ${employeesData[i].FirstName}  ${employeesData[i].LastName} has a birthday.  ***Happy birthday to my incredibly awesome colleague! Wishing you a joyous and fun celebration and a remarkable promotion this year!*** We still don’t know how old you are. I guess that only You and Human resources know your true age. HAPPY BIRTHDAY! Have a nice day.Your Workable!`;
+          
+        } else {
+
+            nextBirthday = moment(birthday).add(age + 1, 'years');
+            allBirthdays.innerHTML = `${employeesData[i].Position} ${employeesData[i].FirstName} ${employeesData[i].LastName} => ${ nextBirthday.diff(today, 'days')} days until next birthday`;
+
+        }
+    }
+}
+
+//SEND BIRTHDAY info
+function sendBirthInfo() {
+    var link = "mailto:me@example.com" 
+        "?cc=myCCaddress@example.com" +
+        "&subject=" + escape("Birthday Info") +
+        "&body=" + escape(document.getElementById('birthday-info').value);
+
+    window.location.href = link;
+}
 
 
 //Search 
@@ -153,25 +211,20 @@ input.addEventListener('keyup', (event) => {
     
 } */
 
+/* var bdates = ['1956-12-03', '1990-03-09', '1970-02-14'];
 
+var now = moment('2019-06-19');
+var birthDates = [];
 
+bdates.forEach(function(birthDate) {
+  var birthDay = moment(birthDate).year(now.year());
+  var birthDayNextYear = moment(birthDate).year(now.year() + 1);
+  var daysRemaining = Math.min(Math.abs(birthDay.diff(now, 'days')), Math.abs(birthDayNextYear.diff(now, 'days')));
+  
+  if((daysRemaining >= 0) && (daysRemaining <= 7)) {
+    birthDates.push(birthDate);
+  }
+});
 
-//SEND BIRTHDAY info
-function sendBirthInfo() {
-    var link = "mailto:me@example.com" +
-        "?cc=myCCaddress@example.com" +
-        "&subject=" + escape("Birthday Info") +
-        "&body=" + escape(document.getElementById('birth-info').value);
-
-    window.location.href = link;
-}
-
-//SEND ANIVERSARY info
-function sendAniversaryInfo() {
-    var link = "mailto:me@example.com" +
-        "?cc=myCCaddress@example.com" +
-        "&subject=" + escape("Aniversary info") +
-        "&body=" + escape(document.getElementById('aniversary-info').value);
-
-    window.location.href = link;
-}
+console.log(JSON.stringify(birthDates));
+console.log(moment().format('LLLL')); */

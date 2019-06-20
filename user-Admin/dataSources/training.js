@@ -95,15 +95,14 @@ function displayTraining(trainings) {
     for (let i in trainings) {
 
         let divTraining = document.getElementById('training-display');
-        let textareaTraining = document.getElementById('training-info');
         let headingInfo = document.createElement('h5');
+        let textareaTraining = document.getElementById('training-info');
         divTraining.appendChild(headingInfo);
 
         trainings[i].entities.forEach(entity => {
             if (entity.dateОfRegistration === today) {
-
-                headingInfo.innerHTML = `★Upcomming training about ${trainings[i].intent} from ${entity.start} to ${entity.end}.Inform colleagues`;
                 textareaTraining.innerHTML = `We would like to inform you about a training course that will take place in ${entity.location} about ${trainings[i].intent} from ${entity.start} to ${entity.end}.f you are interested, please confirm the mail in order to know the correct registration number.Thank you.Have a nice day.Your Workable....`
+                headingInfo.innerHTML = ` ★Upcomming training about ${trainings[i].intent} from ${entity.start} to ${entity.end}.Inform colleagues`;
             } else {
                 headingInfo.style.display = "none";
 
